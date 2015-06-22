@@ -16,13 +16,17 @@ isEmpty(QTCREATOR_SOURCES):error("Error. QTC_SOURCE variable must point to Qt Cr
 IDE_BUILD_TREE = $$(QTC_BUILD)
 isEmpty(IDE_BUILD_TREE):error("Error. QTC_BUILD variable must be set.")
 
+## override IDE_LIBRARY_BASENAME for x64
+IDE_LIBRARY_BASENAME = $$(QTC_LIBRARY_BASENAME)
+isEmpty(IDE_BUILD_TREE):error("Error. QTC_IBRARY_BASENAME variable must be set to lib or lib64.")
+
 ## uncomment to build plugin into user config directory
 ## <localappdata>/plugins/<ideversion>
 ##    where <localappdata> is e.g.
 ##    "%LOCALAPPDATA%\QtProject\qtcreator" on Windows Vista and later
 ##    "$XDG_DATA_HOME/data/QtProject/qtcreator" or "~/.local/share/data/QtProject/qtcreator" on Linux
 ##    "~/Library/Application Support/QtProject/Qt Creator" on Mac
-# USE_USER_DESTDIR = yes
+USE_USER_DESTDIR = yes
 
 include($$QTCREATOR_SOURCES/src/qtcreatorplugin.pri)
 
